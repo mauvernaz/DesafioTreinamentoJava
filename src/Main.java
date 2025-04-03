@@ -17,12 +17,18 @@ public class Main {
         }
 
         //verificar regularidade
-        System.out.println(ManipuladorCSV.verificarRegularidade(dados));
-
+        ManipuladorCSV.verificarRegularidade(dados);
         //informar inatividade
         //informar existencia
 
         //gerar opções uffmail
+        ArrayList<String> opcoes = GeradorUFFMail.gerarUFFMail(numMatricula);
+        int i = 1;
+        for(String uffmail : opcoes) {
+            System.out.print(i + " - ");
+            System.out.println(uffmail);
+            i++;
+        }
 
         //escolher opção uffmail
 
