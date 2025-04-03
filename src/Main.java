@@ -22,15 +22,16 @@ public class Main {
         //informar existencia
 
         //gerar opções uffmail
-        ArrayList<String> opcoes = GeradorUFFMail.gerarUFFMail(numMatricula);
-        int i = 1;
-        for(String uffmail : opcoes) {
-            System.out.print(i + " - ");
-            System.out.println(uffmail);
-            i++;
-        }
+//        ArrayList<String> opcoes = GeradorUFFMail.gerarUFFMail(numMatricula);
+//        int i = 1;
+//        for(String uffmail : opcoes) {
+//            System.out.print(i + " - ");
+//            System.out.println(uffmail);
+//            i++;
+//        }
 
         //escolher opção uffmail
+
 
         //criar uffmail
 

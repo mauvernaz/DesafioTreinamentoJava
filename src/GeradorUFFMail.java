@@ -18,5 +18,7 @@ public class GeradorUFFMail {
         return opcoesUFFmail;
     }
 
-    public static void exibirOpcoesUFFMail(ArrayList<String> opcoesUFFmail){}
+    public static void criarEmail(){
+        //modifica objeto aluno
+    }
 }

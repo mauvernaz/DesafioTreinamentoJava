@@ -27,9 +27,10 @@ public class ManipuladorCSV {
         //verifica status
         //get(index) pela possibilidade de mudança na ordem dos campos no aluno.csv
         if(dadosAluno.get(5).equals("Ativo")){
-            if(dadosAluno.get(4) == null){
+            if(dadosAluno.get(4).equals("")){
                 ArrayList<String> opcoes = GeradorUFFMail.gerarUFFMail(dadosAluno.get(1) /*matricula*/);
-                System.out.println(", por favor escolha uma das opções abaixo para o seu UFFMail");
+                String nome = dadosAluno.get(0).split(" ")[0];
+                System.out.println(nome + ", por favor escolha uma das opções abaixo para o seu UFFMail");
                 int i = 1;
                 for(String uffmail : opcoes) {
                     System.out.print(i + " - ");
