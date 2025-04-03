@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,6 +17,7 @@ public class Main {
         }
 
         //verificar regularidade
+        System.out.println(ManipuladorCSV.verificarRegularidade(dados));
 
         //informar inatividade
         //informar existencia

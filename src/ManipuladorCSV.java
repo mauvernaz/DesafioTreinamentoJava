@@ -23,17 +23,14 @@ public class ManipuladorCSV {
         return dados;
     };
 
-    public static boolean verificarRegularidade(ArrayList<String> dadosAluno){
+    public static String verificarRegularidade(ArrayList<String> dadosAluno){
         //verifica status
         //get(index) pela possibilidade de mudança na ordem dos campos no aluno.csv
-        if(dadosAluno.get(5) == "Inativo"){
-            return false;
-        }
-        if(dadosAluno.get(4) == null){
-            return false;
-        }else{
-            return true;
-        }
+        if(dadosAluno.get(5).equals("Ativo")){
+            if(dadosAluno.get(4) == null){
+                return "";
+            }else return "Você já possui um UFFmail: " + dadosAluno.get(4);
+        }else return "Você precisa de uma matrícula ativa para criar um UFFmail.";
     }
 
 
