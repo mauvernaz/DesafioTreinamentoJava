@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class ManipuladorCSV {
     private static final String PATH_ALUNOS = "src/alunos.csv";
@@ -25,27 +24,28 @@ public class ManipuladorCSV {
         return dados;
     };
 
-    public static void verificarRegularidade(ArrayList<String> dadosAluno){
+    public static ArrayList<String> verificarRegularidade(ArrayList<String> dadosAluno) throws Exception {
         //verifica status
         //get(index) pela possibilidade de mudança na ordem dos campos no aluno.csv
         if (!dadosAluno.get(5).equals("Ativo")) {
-            System.out.println("Você precisa de uma matrícula ativa para criar um UFFmail.");
-            return;
+            throw new Exception("Você precisa de uma matrícula ativa para criar um UFFmail.");
         }
 
         if (!dadosAluno.get(4).isEmpty()) {
-            System.out.println("Você já possui um UFFmail: " + dadosAluno.get(4));
-            return;
+            throw new Exception("Você já possui um UFFmail: " + dadosAluno.get(4));
         }
 
         String nomeCompleto = dadosAluno.get(0);
         ArrayList<String> opcoes = geradorUFFMail.gerarUFFMail(nomeCompleto);
+
         String nome = dadosAluno.get(0).split(" ")[0];
         System.out.println(nome + ", por favor escolha uma das opções abaixo para o seu UFFMail");
 
         for (int i = 0; i < opcoes.size(); i++) {
             System.out.println((i + 1) + " - " + opcoes.get(i));
         }
+
+        return opcoes;
     }
 
 

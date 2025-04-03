@@ -20,8 +20,11 @@ public class GeradorUFFMail {
         return opcoesUFFmail;
     }
 
-    public static void criarEmail(ArrayList<String> opcoesUFFmail){
-
-        }
+//    public static void criarEmail(String uffmailEscolhido){
+//        System.out.println("A criação de seu email (" + uffmailEscolhido + ") será feita nos próximos minutos." +
+//        "Um SMS foi enviado para" + tel + "com a sua senha de acesso.");
+//
+//
+//        }
     }
 

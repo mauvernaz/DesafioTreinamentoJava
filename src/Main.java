@@ -11,15 +11,15 @@ public class Main {
 
         //autenticar
         ArrayList<String> dados = ManipuladorCSV.dadosAluno(numMatricula);
-        if(dados.isEmpty()) {
-            System.out.println("Matrícula não encontrada!");
+        if (dados.isEmpty()) {
+            System.out.println("Matrícula não encontrada.");
         }
-        for(String campo : dados){
+        for (String campo : dados) {
             System.out.println(campo);
         }
 
         //verificar regularidade
-        ManipuladorCSV.verificarRegularidade(dados);
+        //ManipuladorCSV.verificarRegularidade(dados);
         //informar inatividade
         //informar existencia
 
@@ -33,12 +33,29 @@ public class Main {
 //        }
 
         //escolher opção uffmail
+        ArrayList<String> opcoes = null;
+        try {
+            opcoes = ManipuladorCSV.verificarRegularidade(dados);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        if (opcoes != null && !opcoes.isEmpty()) {
+            int escolha = scanner.nextInt();
 
+            if (escolha > 0 && escolha <= opcoes.size()) {
+                String uffmailEscolhido = opcoes.get(escolha - 1);
+                System.out.println("A criação de seu email (" + uffmailEscolhido + ") será feita nos próximos minutos." +
+                "\nUm SMS foi enviado para " + dados.get(2) + " com a sua senha de acesso.");
+            } else {
+                System.out.println("Opção inválida");
+            }
 
-        //criar uffmail
+            //criar uffmail
 
-        //confirmar criação uffmail
+            //confirmar criação uffmail
 
-        //"enviar sms"
+            //"enviar sms"
+        }
     }
 }
