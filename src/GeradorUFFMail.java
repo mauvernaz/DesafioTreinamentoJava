@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 
 public class GeradorUFFMail {
-    public static ArrayList<String> gerarUFFMail(String matricula){
-        String nomeCompleto = ManipuladorCSV.dadosAluno(matricula).get(0).toLowerCase();
-        String[] nomeSeparado = nomeCompleto.split(" ");
+
+
+    public ArrayList<String> gerarUFFMail(String nomeCompleto){
         ArrayList<String> opcoesUFFmail = new ArrayList<>();
+        String[] nomeSeparado = nomeCompleto.toLowerCase().split(" ");
+
         String nomePrimeiro = nomeSeparado[0];
         String nomeMeio = nomeSeparado[1]; //considerando que sempre serão três nomes
         String nomeUltimo = nomeSeparado[2];
@@ -18,7 +20,8 @@ public class GeradorUFFMail {
         return opcoesUFFmail;
     }
 
-    public static void criarEmail(){
-        //modifica objeto aluno
+    public static void criarEmail(ArrayList<String> opcoesUFFmail){
+
+        }
     }
-}
+

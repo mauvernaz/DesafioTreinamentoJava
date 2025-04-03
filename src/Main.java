@@ -10,8 +10,10 @@ public class Main {
         System.out.println(numMatricula);
 
         //autenticar
-        ArrayList<String> dados = new ArrayList<>();
-        dados = ManipuladorCSV.dadosAluno(numMatricula);
+        ArrayList<String> dados = ManipuladorCSV.dadosAluno(numMatricula);
+        if(dados.isEmpty()) {
+            System.out.println("Matrícula não encontrada!");
+        }
         for(String campo : dados){
             System.out.println(campo);
         }
