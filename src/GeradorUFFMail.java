@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class GeradorUFFMail {
 
-
     public ArrayList<String> gerarUFFMail(String nomeCompleto){
         ArrayList<String> opcoesUFFmail = new ArrayList<>();
         String[] nomeSeparado = nomeCompleto.toLowerCase().split(" ");
@@ -12,19 +11,11 @@ public class GeradorUFFMail {
         String nomeUltimo = nomeSeparado[2];
 
         opcoesUFFmail.add(nomePrimeiro + "_" + nomeUltimo + "@id.uff.br");
-        opcoesUFFmail.add(nomePrimeiro + nomeMeio.toCharArray()[0] + nomeUltimo.toCharArray()[1] + "@id.uff.br");
+        opcoesUFFmail.add(nomePrimeiro + nomeMeio.charAt(0) + nomeUltimo.charAt(0) + "@id.uff.br");
         opcoesUFFmail.add(nomePrimeiro + nomeUltimo + "@id.uff.br");
-        opcoesUFFmail.add(nomePrimeiro.toCharArray()[0] + nomeUltimo + "@id.uff.br");
-        opcoesUFFmail.add(nomePrimeiro.toCharArray()[0] + nomeMeio.toCharArray()[0] + nomeUltimo + "@id.uff.br");
+        opcoesUFFmail.add(nomePrimeiro.charAt(0) + nomeUltimo + "@id.uff.br");
+        opcoesUFFmail.add(nomePrimeiro.charAt(0) + nomeMeio.charAt(0) + nomeUltimo + "@id.uff.br");
 
         return opcoesUFFmail;
     }
-
-//    public static void criarEmail(String uffmailEscolhido){
-//        System.out.println("A criação de seu email (" + uffmailEscolhido + ") será feita nos próximos minutos." +
-//        "Um SMS foi enviado para" + tel + "com a sua senha de acesso.");
-//
-//
-//        }
     }
-

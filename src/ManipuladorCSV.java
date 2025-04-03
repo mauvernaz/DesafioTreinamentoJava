@@ -6,7 +6,7 @@ public class ManipuladorCSV {
     private static final String PATH_ALUNOS = "src/alunos.csv";
     public static GeradorUFFMail geradorUFFMail = new GeradorUFFMail();
 
-    //arraylist buscador de informações
+    //buscador de informações em aluno.csv pela matricula
     public static ArrayList<String> dadosAluno(String matricula){
         ArrayList<String> dados = new ArrayList<>();
         try {
@@ -24,8 +24,8 @@ public class ManipuladorCSV {
         return dados;
     };
 
+    //verificador das informações buscadas para checar existência de uffmail e status de atividade
     public static ArrayList<String> verificarRegularidade(ArrayList<String> dadosAluno) throws Exception {
-        //verifica status
         //get(index) pela possibilidade de mudança na ordem dos campos no aluno.csv
         if (!dadosAluno.get(5).equals("Ativo")) {
             throw new Exception("Você precisa de uma matrícula ativa para criar um UFFmail.");
@@ -47,6 +47,4 @@ public class ManipuladorCSV {
 
         return opcoes;
     }
-
-
 }

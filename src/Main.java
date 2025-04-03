@@ -4,35 +4,17 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        //informar matrícula
+        //requisitar matricula do aluno manualmente
         System.out.println("Para criação do UFFmail, informe sua matrícula:");
         String numMatricula = scanner.nextLine();
-        System.out.println(numMatricula);
 
-        //autenticar
+        //reunir dados do aluno pela matricula
         ArrayList<String> dados = ManipuladorCSV.dadosAluno(numMatricula);
         if (dados.isEmpty()) {
             System.out.println("Matrícula não encontrada.");
         }
-        for (String campo : dados) {
-            System.out.println(campo);
-        }
 
-        //verificar regularidade
-        //ManipuladorCSV.verificarRegularidade(dados);
-        //informar inatividade
-        //informar existencia
-
-        //gerar opções uffmail
-//        ArrayList<String> opcoes = GeradorUFFMail.gerarUFFMail(numMatricula);
-//        int i = 1;
-//        for(String uffmail : opcoes) {
-//            System.out.print(i + " - ");
-//            System.out.println(uffmail);
-//            i++;
-//        }
-
-        //escolher opção uffmail
+        //exibir opcoes de uffmail se possível/regular
         ArrayList<String> opcoes = null;
         try {
             opcoes = ManipuladorCSV.verificarRegularidade(dados);
@@ -40,6 +22,7 @@ public class Main {
             System.out.println(e.getMessage());
             return;
         }
+        //receber escolha do aluno e confirmar criação e sms
         if (opcoes != null && !opcoes.isEmpty()) {
             int escolha = scanner.nextInt();
 
@@ -50,12 +33,6 @@ public class Main {
             } else {
                 System.out.println("Opção inválida");
             }
-
-            //criar uffmail
-
-            //confirmar criação uffmail
-
-            //"enviar sms"
         }
     }
 }
