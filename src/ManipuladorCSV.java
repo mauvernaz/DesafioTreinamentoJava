@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class ManipuladorCSV {
     private static final String PATH_ALUNOS = "src/alunos.csv";
     public static GeradorUFFMail geradorUFFMail = new GeradorUFFMail();
+    public Aluno aluno = new Aluno();
 
     //buscador de informações em aluno.csv pela matricula
     public static ArrayList<String> dadosAluno(String matricula){
@@ -25,16 +26,18 @@ public class ManipuladorCSV {
     };
 
     //verificador das informações buscadas para checar existência de uffmail e status de atividade
+    //função boolean ou integer com switch case?
     public static ArrayList<String> verificarRegularidade(ArrayList<String> dadosAluno) throws Exception {
         //get(index) pela possibilidade de mudança na ordem dos campos no aluno.csv
         if (!dadosAluno.get(5).equals("Ativo")) {
-            throw new Exception("Você precisa de uma matrícula ativa para criar um UFFmail.");
+            throw new Exception("Você precisa de uma matrícula ativa para criar um UFFmail."); //return false
         }
 
         if (!dadosAluno.get(4).isEmpty()) {
-            throw new Exception("Você já possui um UFFmail: " + dadosAluno.get(4));
+            throw new Exception("Você já possui um UFFmail: " + dadosAluno.get(4)); // return false
         }
 
+        //outro que recebe boolean
         String nomeCompleto = dadosAluno.get(0);
         ArrayList<String> opcoes = geradorUFFMail.gerarUFFMail(nomeCompleto);
 
@@ -44,7 +47,21 @@ public class ManipuladorCSV {
         for (int i = 0; i < opcoes.size(); i++) {
             System.out.println((i + 1) + " - " + opcoes.get(i));
         }
-
-        return opcoes;
+        return opcoes; //true
     }
+
+    //função que recebe o verificarRegularidade
+//    public static ArrayList<String> informarRegularidade(Integer caso){
+//    switch(caso) {
+//        case 1:
+//            System.out.println("Você precisa de uma matrícula ativa para criar um UFFmail");
+//            break;
+//        case 2:
+//            System.out.println("Você já possui um UFFmail");
+//            break;
+//        default:
+//
+//    }
+//
+//    }
 }

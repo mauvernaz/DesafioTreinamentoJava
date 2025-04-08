@@ -1,2 +1,4 @@
-Preciso usar mais Objetos
-Criar classe Usuario? com atributos de nome etc
+exercicio da função menor que metade da tela (Modularizar o código em em mais funções)
+modelar esse problema pra banco de dados adicionando campos pertinentes (mysql)
+prestar atenção ao fluxo de controle
+Criar Modelo UML classes (ou E-R) do exercício I - Aluno/criação email
