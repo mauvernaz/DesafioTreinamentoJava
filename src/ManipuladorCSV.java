@@ -5,43 +5,49 @@ import java.util.Arrays;
 public class ManipuladorCSV {
     private static final String PATH_ALUNOS = "src/alunos.csv";
     public static GeradorUFFMail geradorUFFMail = new GeradorUFFMail();
-    public Aluno aluno = new Aluno();
+    public static Aluno aluno = new Aluno();
 
     //buscador de informações em aluno.csv pela matricula
-    public static ArrayList<String> dadosAluno(String matricula){
-        ArrayList<String> dados = new ArrayList<>();
+    public static Aluno dadosAluno(String matricula){
+        //ArrayList<String> dados = new ArrayList<>();
         try {
             BufferedReader br = new BufferedReader(new FileReader(PATH_ALUNOS));
             String linha;
             while((linha = br.readLine()) != null) {
                 String[] campos = linha.split(",");
                 if(campos.length > 1 && campos[1].equals(matricula)){
-                    dados.addAll(Arrays.asList(campos));
+                    //dados.addAll(Arrays.asList(campos));
+                    aluno.setNomeCompleto(campos[0]);
+                    aluno.setMatricula(campos[1]);
+                    aluno.setTelefone(campos[2]);
+                    aluno.setEmail(campos[3]);
+                    aluno.setUffmail(campos[4]);
+                    aluno.setStatusAtividade(campos[5]);
                 }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return dados;
+        return aluno;
     };
 
     //verificador das informações buscadas para checar existência de uffmail e status de atividade
     //função boolean ou integer com switch case?
-    public static ArrayList<String> verificarRegularidade(ArrayList<String> dadosAluno) throws Exception {
+    public static ArrayList<String> verificarRegularidade(Aluno dadosAluno) throws Exception {
         //get(index) pela possibilidade de mudança na ordem dos campos no aluno.csv
-        if (!dadosAluno.get(5).equals("Ativo")) {
+        if (!dadosAluno.getStatusAtividade().equals("Ativo")) {
             throw new Exception("Você precisa de uma matrícula ativa para criar um UFFmail."); //return false
         }
 
-        if (!dadosAluno.get(4).isEmpty()) {
-            throw new Exception("Você já possui um UFFmail: " + dadosAluno.get(4)); // return false
+        if (!dadosAluno.getUffmail().isEmpty()) {
+            throw new Exception("Você já possui um UFFmail: " + dadosAluno.getUffmail()); // return false
         }
 
         //outro que recebe boolean
-        String nomeCompleto = dadosAluno.get(0);
+        String nomeCompleto = dadosAluno.getNomeCompleto();
         ArrayList<String> opcoes = geradorUFFMail.gerarUFFMail(nomeCompleto);
 
-        String nome = dadosAluno.get(0).split(" ")[0];
+        String nome = dadosAluno.getNomeCompleto().split(" ")[0];
         System.out.println(nome + ", por favor escolha uma das opções abaixo para o seu UFFMail");
 
         for (int i = 0; i < opcoes.size(); i++) {

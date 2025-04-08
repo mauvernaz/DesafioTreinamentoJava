@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -9,8 +10,8 @@ public class Main {
         String numMatricula = scanner.nextLine();
 
         //reunir dados do aluno pela matricula
-        ArrayList<String> dados = ManipuladorCSV.dadosAluno(numMatricula);
-        if (dados.isEmpty()) {
+        Aluno dados = ManipuladorCSV.dadosAluno(numMatricula);
+        if (!Objects.equals(dados.getMatricula(), numMatricula)) {
             System.out.println("Matrícula não encontrada.");
         }
 
@@ -29,7 +30,7 @@ public class Main {
             if (escolha > 0 && escolha <= opcoes.size()) {
                 String uffmailEscolhido = opcoes.get(escolha - 1);
                 System.out.println("A criação de seu email (" + uffmailEscolhido + ") será feita nos próximos minutos." +
-                "\nUm SMS foi enviado para " + dados.get(2) + " com a sua senha de acesso.");
+                "\nUm SMS foi enviado para " + dados.getTelefone() + " com a sua senha de acesso.");
             } else {
                 System.out.println("Opção inválida");
             }
