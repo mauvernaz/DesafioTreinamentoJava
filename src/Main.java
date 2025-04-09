@@ -18,7 +18,9 @@ public class Main {
         //exibir opcoes de uffmail se possível/regular
         ArrayList<String> opcoes = null;
         try {
-            opcoes = ManipuladorCSV.verificarRegularidade(dados);
+            if(ManipuladorCSV.verificarRegularidade(dados)){
+                opcoes = GeradorUFFMail.exibirUFFMails();
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return;
